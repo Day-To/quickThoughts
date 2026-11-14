@@ -15,8 +15,11 @@ export const metadata: Metadata = {
   title: "Quick Thoughts",
   description: "Capture a thought in seconds; it gets organised, linked and made searchable for you.",
   applicationName: "Quick Thoughts",
-  // Added to an iPhone's home screen, it opens full screen like an app.
-  appleWebApp: { capable: true, title: "Quick Thoughts", statusBarStyle: "black-translucent" },
+  // Added to an iPhone's home screen, it opens full screen like an app. The status bar
+  // keeps its own strip ("default") rather than floating over the page: when the page
+  // runs underneath it ("black-translucent"), iOS blurs and dims whatever is up there
+  // and reports a page height shorter than the screen.
+  appleWebApp: { capable: true, title: "Quick Thoughts", statusBarStyle: "default" },
   formatDetection: { telephone: false },
 }
 
@@ -38,7 +41,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="h-dvh overflow-hidden print:h-auto print:overflow-visible">
+      {/* Pinned to the screen's edges rather than sized by viewport units, which come up
+          short in an installed iPhone app and leave a strip along the bottom. */}
+      <body className="fixed inset-0 overflow-hidden print:static print:overflow-visible">
         {children}
         <Pwa />
       </body>
