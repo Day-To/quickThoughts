@@ -667,8 +667,10 @@ Installable app (PWA), 15 Nov 2026:
   files). Headers for `/sw.js` are set in `next.config.ts`.
 - Checked against `next build` + `next start`: Chrome reports no installability
   errors, and the app opens with the network off.
-- Still needed before it can be installed on a phone: hosting over HTTPS (phase 6),
-  and the hosted address added to Supabase's allowed sign-in redirect URLs.
+- Hosted by the owner on Vercel at https://notes.dayto.in/ (15 Nov 2026), with that
+  address set as Supabase's site URL and in its allowed redirect URLs.
+- Checked on the hosted address: installable, sign-in, capture written up by the
+  pipeline, search, and a signed-in offline relaunch with the note still there.
 
 Changed during review:
 

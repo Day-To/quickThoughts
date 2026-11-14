@@ -233,10 +233,12 @@ function EditorToolbar({ editor, note }: { editor: Editor | null; note: Note | n
     ["Italic", "I", state?.italic, () => run().toggleItalic().run(), "italic"],
     ["Underline", "U", state?.underline, () => run().toggleUnderline().run(), "underline"],
     ["Strikethrough", "S", state?.strike, () => run().toggleStrike().run(), "line-through"],
+    // On a phone the toolbar has no room for its own Highlight button, so it lives here too.
+    ["Highlight", "H", state?.highlight, () => run().toggleHighlight().run(), "underline decoration-app-accent decoration-4 underline-offset-2"],
   ]
 
   return (
-    <header className="flex h-[52px] shrink-0 items-center gap-2 border-b px-2.5 max-md:gap-1.5 max-md:px-2 print:hidden">
+    <header className="box-content flex h-[52px] shrink-0 items-center gap-2 border-b px-2.5 pt-[env(safe-area-inset-top)] max-md:gap-1.5 max-md:px-2 print:hidden">
       {mobile ? (
         <Pill>
           <ToolButton label="Notes" onClick={() => setMobilePane("list")}>
@@ -425,14 +427,16 @@ function EditorToolbar({ editor, note }: { editor: Editor | null; note: Note | n
           <PenTool />
         </ToolButton>
 
-        <ToolButton
-          label="Highlight"
-          disabled={readOnly}
-          active={state?.highlight}
-          onClick={() => run().toggleHighlight().run()}
-        >
-          <Highlighter />
-        </ToolButton>
+        {!mobile && (
+          <ToolButton
+            label="Highlight"
+            disabled={readOnly}
+            active={state?.highlight}
+            onClick={() => run().toggleHighlight().run()}
+          >
+            <Highlighter />
+          </ToolButton>
+        )}
       </Pill>
 
       <div className="flex-1" />

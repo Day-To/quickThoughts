@@ -26,7 +26,7 @@ export function AuthScreen() {
   const recovering = useAuth((s) => s.recovering)
 
   return (
-    <div className="relative grid h-full w-full place-items-center overflow-y-auto bg-background px-4 py-10">
+    <div className="relative grid h-full w-full place-items-center overflow-y-auto bg-background px-4 pt-[max(2.5rem,calc(env(safe-area-inset-top)+1rem))] pb-10">
       <Doodles />
       <div className="relative w-full max-w-[380px]">
         <div className="flex flex-col items-center pb-6 text-center">

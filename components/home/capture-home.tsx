@@ -159,7 +159,7 @@ export function CaptureHome() {
     >
       <Doodles />
       <div className="relative h-full overflow-y-auto">
-      <header className="sticky top-0 z-10 flex h-[52px] items-center px-2.5 pt-[env(safe-area-inset-top)] max-sm:px-2">
+      <header className="sticky top-0 z-10 box-content flex h-[52px] items-center px-2.5 pt-[env(safe-area-inset-top)] max-sm:px-2">
         <Pill>
           <Button
             variant="ghost"

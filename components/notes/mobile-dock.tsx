@@ -77,7 +77,8 @@ export function MobileScreen({
     <Tag className="relative flex h-full w-full flex-col bg-app-grouped print:hidden">
       <header
         className={cn(
-          "absolute inset-x-0 top-0 z-10 flex h-[60px] items-center gap-2 px-4 transition-[background-color,border-color] duration-200",
+          // Installed on a phone, the page runs under the status bar: the bar sits below it.
+          "absolute inset-x-0 top-0 z-10 box-content flex h-[60px] items-center gap-2 px-4 pt-[env(safe-area-inset-top)] transition-[background-color,border-color] duration-200",
           compact ? "border-b bg-app-grouped/80 backdrop-blur-xl" : "border-b border-transparent"
         )}
       >
@@ -90,7 +91,7 @@ export function MobileScreen({
       </header>
       <div
         data-mobile-scroll
-        className="flex-1 overflow-x-hidden overflow-y-auto px-[18px] pt-[68px] pb-28"
+        className="flex-1 overflow-x-hidden overflow-y-auto px-[18px] pt-[calc(68px+env(safe-area-inset-top))] pb-28"
         onScroll={(e) => {
           const past = e.currentTarget.scrollTop > 52
           if (past !== compact) onCompact(past)

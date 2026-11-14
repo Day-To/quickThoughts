@@ -23,6 +23,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  // Stops a phone zooming the page in when a text field is focused. It is an app, laid
+  // out to fit the screen; text size is changed inside notes instead.
+  maximumScale: 1,
+  userScalable: false,
   // Lets the page draw under the notch; safe-area insets keep controls clear of it.
   viewportFit: "cover",
   themeColor: [

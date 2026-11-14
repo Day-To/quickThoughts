@@ -37,7 +37,7 @@ export function Spotlight() {
         <DialogPrimitive.Backdrop className="fixed inset-0 z-50 bg-black/15 duration-150 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 dark:bg-black/40" />
         <DialogPrimitive.Popup
           aria-label="Search"
-          className="spotlight fixed top-[16vh] left-1/2 z-50 flex max-h-[min(68vh,560px)] w-[calc(100%-1.5rem)] max-w-[680px] -translate-x-1/2 flex-col overflow-hidden rounded-[20px] text-foreground outline-none duration-150 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 max-sm:top-3"
+          className="spotlight fixed top-[16vh] left-1/2 z-50 flex max-h-[min(68vh,560px)] w-[calc(100%-1.5rem)] max-w-[680px] -translate-x-1/2 flex-col overflow-hidden rounded-[20px] text-foreground outline-none duration-150 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 max-sm:top-[calc(0.75rem+env(safe-area-inset-top))]"
         >
           {/* Mounted only while open, so each opening starts with an empty query. */}
           <SpotlightBody />

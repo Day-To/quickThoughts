@@ -1,0 +1,10 @@
+# Never upload secrets or anything the hosted app doesn't need.
+.env
+.env.*
+!.env.example
+supabase
+scripts
+plan.md
+.next
+node_modules
+tsconfig.tsbuildinfo

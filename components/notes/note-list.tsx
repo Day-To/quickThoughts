@@ -126,7 +126,7 @@ export function NoteList({ width }: { width: number | string }) {
 
   return (
     <section className="flex shrink-0 flex-col print:hidden" style={{ width }}>
-      <header className="flex h-[52px] shrink-0 items-center gap-2 border-b pr-2.5 pl-2.5">
+      <header className="box-content flex h-[52px] shrink-0 items-center gap-2 border-b pt-[env(safe-area-inset-top)] pr-2.5 pl-2.5">
         <AnimatePresence initial={false}>
           {!mobile && !sidebarOpen && (
             <motion.div

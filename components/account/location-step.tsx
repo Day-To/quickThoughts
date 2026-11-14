@@ -29,7 +29,7 @@ export function LocationStep() {
   }
 
   return (
-    <div className="relative grid h-full w-full place-items-center overflow-y-auto bg-background px-4 py-10">
+    <div className="relative grid h-full w-full place-items-center overflow-y-auto bg-background px-4 pt-[max(2.5rem,calc(env(safe-area-inset-top)+1rem))] pb-10">
       <Doodles />
       <div className="relative w-full max-w-[400px] rounded-[22px] bg-card p-6 shadow-[0_0_0_0.5px_rgb(0_0_0/0.08),0_2px_6px_rgb(0_0_0/0.04),0_14px_40px_rgb(0_0_0/0.08)] dark:shadow-[inset_0_0.5px_0_rgb(255_255_255/0.12),0_14px_40px_rgb(0_0_0/0.5)]">
         <span className="grid size-12 place-items-center rounded-2xl bg-app-accent/15">

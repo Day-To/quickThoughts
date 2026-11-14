@@ -209,7 +209,7 @@ export function Sidebar({ width }: { width: number | string }) {
 
   return (
     <aside className="flex h-full shrink-0 flex-col bg-app-sidebar" style={{ width }}>
-      <div className="flex h-[52px] shrink-0 items-center gap-2 px-2.5">
+      <div className="box-content flex h-[52px] shrink-0 items-center gap-2 px-2.5 pt-[env(safe-area-inset-top)]">
         <Pill>
           <ToolButton label="Home" onClick={() => setView("home")}>
             <House />

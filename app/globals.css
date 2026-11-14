@@ -234,32 +234,14 @@ textarea {
   }
 }
 
-/* Touch screens: larger note text, in step with the larger controls. */
+/* iPhones zoom the page when a focused field's text is under 16px; keep every field at
+   or above that on touch screens so there is nothing to zoom for. */
 @media (pointer: coarse) {
-  .note-prose {
-    font-size: 16px;
-    line-height: 1.375;
-  }
-
-  .note-prose > p:first-child,
-  .note-prose h1 {
-    font-size: 24px;
-    line-height: 1.2084;
-  }
-
-  .note-prose h2 {
-    font-size: 20px;
-    line-height: 1.25;
-  }
-
-  .note-prose h3 {
-    font-size: 17px;
-    line-height: 1.2942;
-  }
-
-  .note-prose ul[data-type="taskList"] input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
+  input,
+  textarea,
+  select,
+  .note-prose.note-prose-original {
+    font-size: max(16px, 1em);
   }
 }
 
@@ -584,4 +566,34 @@ textarea {
   color: var(--muted-foreground);
   opacity: 0.5;
   pointer-events: none;
+}
+
+/* Kept at the end of the file so it takes precedence over the default sizes above. */
+/* Touch screens: larger note text, in step with the larger controls. */
+@media (pointer: coarse) {
+  .note-prose {
+    font-size: 16px;
+    line-height: 1.375;
+  }
+
+  .note-prose > p:first-child,
+  .note-prose h1 {
+    font-size: 24px;
+    line-height: 1.2084;
+  }
+
+  .note-prose h2 {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .note-prose h3 {
+    font-size: 17px;
+    line-height: 1.2942;
+  }
+
+  .note-prose ul[data-type="taskList"] input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
 }
