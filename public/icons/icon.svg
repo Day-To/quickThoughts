@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="band" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd93b"/>
+      <stop offset="1" stop-color="#f8b90a"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f1f1f4"/>
+    </linearGradient>
+    <radialGradient id="glass" cx="0.38" cy="0.32" r="0.85">
+      <stop offset="0" stop-color="#fff3b0"/>
+      <stop offset="0.55" stop-color="#ffd02e"/>
+      <stop offset="1" stop-color="#f2a900"/>
+    </radialGradient>
+  </defs>
+  <!-- a notepad: yellow binding along the top, ruled paper below -->
+  <rect width="512" height="512" fill="url(#paper)"/>
+  <rect width="512" height="138" fill="url(#band)"/>
+  <rect y="138" width="512" height="5" fill="#000" opacity="0.08"/>
+  <g fill="#000" opacity="0.2">
+    <circle cx="64" cy="176" r="6"/><circle cx="112" cy="176" r="6"/><circle cx="160" cy="176" r="6"/><circle cx="208" cy="176" r="6"/>
+    <circle cx="256" cy="176" r="6"/><circle cx="304" cy="176" r="6"/><circle cx="352" cy="176" r="6"/><circle cx="400" cy="176" r="6"/><circle cx="448" cy="176" r="6"/>
+  </g>
+  <g stroke="#d9d9de" stroke-width="5">
+    <path d="M0 262H512M0 338H512M0 414H512"/>
+  </g>
+  <!-- the idea: a lit bulb sitting on the page -->
+  <g>
+    <path d="M256 208c-54 0-96 42-96 94 0 33 17 60 40 78 9 7 14 15 14 26v8h84v-8c0-11 5-19 14-26 23-18 40-45 40-78 0-52-42-94-96-94z" fill="url(#paper)" stroke="url(#paper)" stroke-width="26" stroke-linejoin="round"/>
+    <rect x="207" y="408" width="98" height="64" rx="18" fill="#fff" stroke="#fff" stroke-width="22"/>
+    <path d="M256 208c-54 0-96 42-96 94 0 33 17 60 40 78 9 7 14 15 14 26v8h84v-8c0-11 5-19 14-26 23-18 40-45 40-78 0-52-42-94-96-94z" fill="url(#glass)"/>
+    <path d="M230 330l26 26 26-26M256 356v58" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+    <ellipse cx="220" cy="270" rx="16" ry="26" transform="rotate(32 220 270)" fill="#fff" opacity="0.55"/>
+    <rect x="214" y="414" width="84" height="20" rx="6" fill="#48484a"/>
+    <rect x="220" y="438" width="72" height="18" rx="6" fill="#3a3a3c"/>
+    <path d="M238 460h36a8 8 0 0 1-8 10h-20a8 8 0 0 1-8-10z" fill="#2c2c2e"/>
+  </g>
+  <!-- a spark: it thinks -->
+  <path d="M392 212c4 22 12 30 34 34-22 4-30 12-34 34-4-22-12-30-34-34 22-4 30-12 34-34z" fill="#f5a800"/>
+  <path d="M130 300c2 12 7 17 19 19-12 2-17 7-19 19-2-12-7-17-19-19 12-2 17-7 19-19z" fill="#f5a800" opacity="0.85"/>
+</svg>

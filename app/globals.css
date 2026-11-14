@@ -1,0 +1,587 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-inter), "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --color-app-sidebar: var(--app-sidebar);
+  --color-app-grouped: var(--app-grouped);
+  --color-app-group: var(--app-group);
+  --color-app-selected: var(--app-selected);
+  --color-note-selected: var(--note-selected);
+  --color-app-accent: var(--app-accent);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: #262626;
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --app-sidebar: #ecebe9;
+  --app-selected: rgb(0 0 0 / 9%);
+  --note-selected: #fbe08f;
+  --app-accent: #e2a400;
+  --glass: rgb(255 255 255 / 92%);
+  /* Phone lists: a tinted page with lighter cards on it, as in Notes on iPhone. */
+  --app-grouped: #f2f2f7;
+  --app-group: #ffffff;
+  --glass-shadow: 0 0 0 0.5px rgb(0 0 0 / 8%), 0 1px 2px rgb(0 0 0 / 5%), 0 4px 14px rgb(0 0 0 / 7%);
+  --menu-shadow: 0 0 0 0.5px rgb(0 0 0 / 14%), 0 10px 32px rgb(0 0 0 / 18%);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --app-sidebar: #2b2a28;
+    --app-selected: rgb(255 255 255 / 12%);
+    --note-selected: #8a6d1c;
+    --app-accent: #f2bd2c;
+    --glass: rgb(255 255 255 / 8%);
+    --app-grouped: #000000;
+    --app-group: #1c1c1e;
+    --glass-shadow: inset 0 0.5px 0 rgb(255 255 255 / 16%), 0 0 0 0.5px rgb(255 255 255 / 7%), 0 4px 14px rgb(0 0 0 / 35%);
+    --menu-shadow: inset 0 0.5px 0 rgb(255 255 255 / 14%), 0 0 0 0.5px rgb(0 0 0 / 60%), 0 10px 32px rgb(0 0 0 / 50%);
+    --background: oklch(0.19 0 0);
+  --foreground: #dedede;
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ---------- App chrome ---------- */
+
+body {
+  overscroll-behavior: none;
+  /* No grey flash on tap, and no double-tap-to-zoom delay. */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+input,
+textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+::selection {
+  background: color-mix(in oklch, var(--app-accent) 38%, transparent);
+}
+
+@layer components {
+  /* Floating toolbar capsule. */
+  .glass {
+    background: var(--glass);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(20px) saturate(1.6);
+  }
+}
+
+/* Menus: translucent material instead of a flat popover. */
+[data-slot$="menu-content"],
+[data-slot$="menu-sub-content"] {
+  border-radius: 10px;
+  background: color-mix(in oklch, var(--popover) 74%, transparent);
+  box-shadow: var(--menu-shadow);
+  backdrop-filter: blur(30px) saturate(1.8);
+  font-size: 13px;
+}
+
+[data-slot$="menu-item"],
+[data-slot$="menu-radio-item"],
+[data-slot$="menu-sub-trigger"] {
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+@keyframes note-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes check-pop {
+  0% {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+}
+
+/* Home screen doodles: their pastel fills are toned down on a dark background. */
+@media (prefers-color-scheme: dark) {
+  .doodle [fill] {
+    fill-opacity: 0.3;
+  }
+}
+
+/* Touch screens: larger note text, in step with the larger controls. */
+@media (pointer: coarse) {
+  .note-prose {
+    font-size: 16px;
+    line-height: 1.375;
+  }
+
+  .note-prose > p:first-child,
+  .note-prose h1 {
+    font-size: 24px;
+    line-height: 1.2084;
+  }
+
+  .note-prose h2 {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .note-prose h3 {
+    font-size: 17px;
+    line-height: 1.2942;
+  }
+
+  .note-prose ul[data-type="taskList"] input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* The home composer: the same editor as a note, but every line is body text. */
+.note-prose.note-prose-compose {
+  min-height: 86px;
+  padding-bottom: 0;
+  font-size: 17px;
+  line-height: 1.4706;
+  animation: none;
+}
+
+.note-prose.note-prose-compose > p:first-child {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.note-prose.note-prose-compose ul:not([data-type="taskList"]),
+.note-prose.note-prose-compose ol {
+  padding-left: 28px;
+}
+
+.note-prose.note-prose-compose ul[data-type="dashed"] > li::before {
+  left: -19px;
+}
+
+.note-prose.note-prose-compose ul[data-type="taskList"] input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 1.5px;
+}
+
+/* A thought as it was captured, in the box beside the note: body text throughout. */
+.note-prose.note-prose-original {
+  min-height: 0;
+  padding-bottom: 0;
+  font-size: 14.5px;
+  line-height: 1.4483;
+  animation: none;
+}
+
+.note-prose.note-prose-original[contenteditable="false"] {
+  cursor: auto;
+}
+
+.note-prose.note-prose-original > p:first-child {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.note-prose.note-prose-original hr {
+  margin: 10px 0;
+}
+
+/* Spotlight-style search panel: thick translucent glass over whatever is behind it. */
+.spotlight {
+  background: color-mix(in oklch, var(--popover) 82%, transparent);
+  box-shadow: 0 0 0 0.5px rgb(0 0 0 / 18%), 0 24px 70px rgb(0 0 0 / 28%);
+  backdrop-filter: blur(40px) saturate(1.8);
+}
+
+@media (prefers-color-scheme: dark) {
+  .spotlight {
+    box-shadow: inset 0 0.5px 0 rgb(255 255 255 / 16%), 0 0 0 0.5px rgb(0 0 0 / 70%), 0 24px 70px rgb(0 0 0 / 60%);
+  }
+}
+
+/* Text the user wrote is set in San Francisco's single-storey "a" alternate, as in Apple Notes. */
+.note-font {
+  font-feature-settings: "ss07";
+}
+
+/* ---------- Note editor content ---------- */
+
+/* Matches the editor's own specificity, which otherwise resets font features. */
+.ProseMirror.note-prose {
+  font-feature-settings: "ss07", "liga" 0;
+}
+
+.note-prose {
+  min-height: 60vh;
+  padding-bottom: 6rem;
+  font-size: 13px;
+  /* 17px at the default size. A ratio rather than a fixed height, so a line holding
+     bigger text grows to fit it; rounded up so it never lands a fraction under. */
+  line-height: 1.3077;
+  cursor: text;
+  -webkit-user-select: text;
+  user-select: text;
+  animation: note-in 140ms ease-out;
+  outline: none;
+  caret-color: var(--app-accent);
+}
+
+.note-prose > * + * {
+  margin-top: 0;
+}
+
+/* The first line of a note is its title. */
+.note-prose > p:first-child,
+.note-prose h1 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.note-prose h2 {
+  margin-top: 0.5rem;
+  font-size: 17px;
+  line-height: 1.2942;
+  font-weight: 700;
+}
+
+.note-prose h3 {
+  margin-top: 0.35rem;
+  font-size: 15px;
+  line-height: 1.3334;
+  font-weight: 600;
+}
+
+.note-prose ul,
+.note-prose ol {
+  padding-left: 23px;
+}
+
+.note-prose ul {
+  list-style: disc;
+}
+
+.note-prose ol {
+  list-style: decimal;
+}
+
+.note-prose ul[data-type="dashed"] {
+  list-style: none;
+}
+
+.note-prose ul[data-type="dashed"] > li {
+  position: relative;
+}
+
+.note-prose ul[data-type="dashed"] > li::before {
+  content: "–";
+  position: absolute;
+  left: -12px;
+}
+
+.note-prose ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0.1rem;
+}
+
+/* Checklist rows sit further apart than lines of text: 22px from one to the next at
+   the default size, measured from Apple Notes. */
+.note-prose ul[data-type="taskList"] > li {
+  display: flex;
+  gap: 6px;
+  padding-block: calc(2.5em / 13);
+}
+
+.note-prose ul[data-type="taskList"] > li > label {
+  flex: none;
+  margin-top: 0.5px;
+  user-select: none;
+}
+
+.note-prose ul[data-type="taskList"] > li > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.note-prose ul[data-type="taskList"] input[type="checkbox"] {
+  appearance: none;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--muted-foreground);
+  border-radius: 50%;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: background-color 150ms, border-color 150ms, opacity 150ms;
+}
+
+.note-prose ul[data-type="taskList"] input[type="checkbox"]:checked {
+  border-color: var(--app-accent);
+  background: var(--app-accent)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 8.5 2.7 2.7L12 5.5'/%3E%3C/svg%3E")
+    center / 100% no-repeat;
+  opacity: 1;
+  animation: check-pop 240ms ease-out;
+}
+
+.note-prose li[data-type="taskItem"] > div {
+  transition: color 200ms;
+}
+
+.note-prose li[data-checked="true"] > div {
+  color: var(--muted-foreground);
+}
+
+.note-prose blockquote {
+  margin: 0.4rem 0;
+  border-left: 3px solid var(--app-accent);
+  padding-left: 0.9rem;
+  color: var(--muted-foreground);
+}
+
+.note-prose code {
+  border-radius: 0.3rem;
+  background: var(--muted);
+  padding: 0.1rem 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.note-prose pre {
+  margin: 0.4rem 0;
+  border-radius: 0.5rem;
+  background: var(--muted);
+  padding: 0.7rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  overflow-x: auto;
+}
+
+.note-prose pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+.note-prose a {
+  color: var(--app-accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.note-prose mark {
+  border-radius: 0.2rem;
+  background: color-mix(in oklch, var(--app-accent) 45%, transparent);
+  color: inherit;
+  padding: 0 0.1rem;
+}
+
+.note-prose hr {
+  margin: 0.8rem 0;
+  border-color: var(--border);
+}
+
+.note-prose img {
+  margin: 0.5rem 0;
+  max-width: min(100%, 36rem);
+  border-radius: 0.5rem;
+}
+
+.note-prose audio {
+  display: block;
+  margin: 0.4rem 0;
+  width: min(100%, 22rem);
+  height: 36px;
+}
+
+.note-prose audio.ProseMirror-selectednode,
+.note-prose img.ProseMirror-selectednode {
+  outline: 3px solid var(--app-accent);
+}
+
+.note-prose .tableWrapper {
+  margin: 0.6rem 0;
+  overflow-x: auto;
+}
+
+.note-prose table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.note-prose th,
+.note-prose td {
+  position: relative;
+  min-width: 4rem;
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.6rem;
+  vertical-align: top;
+  text-align: left;
+}
+
+.note-prose th {
+  background: var(--muted);
+  font-weight: 600;
+}
+
+.note-prose .selectedCell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in oklch, var(--app-accent) 22%, transparent);
+  pointer-events: none;
+}
+
+.note-prose .column-resize-handle {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  bottom: -2px;
+  width: 4px;
+  background: var(--app-accent);
+  pointer-events: none;
+}
+
+.note-prose.resize-cursor {
+  cursor: col-resize;
+}
+
+.note-prose p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: var(--muted-foreground);
+  opacity: 0.5;
+  pointer-events: none;
+}
