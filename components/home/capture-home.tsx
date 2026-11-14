@@ -158,7 +158,7 @@ export function CaptureHome() {
       }}
     >
       <Doodles />
-      <div className="relative h-full overflow-y-auto">
+      <div className="relative h-full overflow-y-auto overscroll-contain">
       <header className="sticky top-0 z-10 box-content flex h-[52px] items-center px-2.5 pt-[env(safe-area-inset-top)] max-sm:px-2">
         <Pill>
           <Button
@@ -179,7 +179,7 @@ export function CaptureHome() {
         <AccountButton />
       </header>
 
-      <main className="mx-auto w-full max-w-[660px] px-3 pt-1 pb-[calc(4rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-[9vh] sm:pb-24">
+      <main className="mx-auto w-full max-w-[660px] px-3 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-[9vh] sm:pb-24">
         <p className="pb-3 pl-1 text-[13px] font-medium text-muted-foreground">
           {todayLabel()}
         </p>
@@ -192,7 +192,8 @@ export function CaptureHome() {
         >
           <EditorContent
             editor={editor}
-            className="max-h-[45vh] overflow-y-auto px-5 pt-[18px] pb-2"
+            // Never taller than the room left above the keyboard, so the screen itself needn't scroll.
+            className="max-h-[min(45vh,calc(var(--app-height,100vh)-17rem))] min-h-[86px] overflow-y-auto px-5 pt-[18px] pb-2"
           />
 
           {draft.attachments.length > 0 && (

@@ -9,6 +9,7 @@ import { AudioNode } from "./audio-node"
 import { DashedList, DottedList } from "./dashed-list"
 import { DrawingNode } from "./drawing-node"
 import { FontSize } from "./font-size"
+import { TaskTap } from "./task-tap"
 import type { NotePatch } from "./store"
 import { ProductsNode, SourcesNode } from "./thought-nodes"
 
@@ -32,6 +33,7 @@ export function noteExtensions(placeholder: string) {
     SourcesNode,
     Highlight,
     FontSize,
+    TaskTap,
     Placeholder.configure({ placeholder }),
   ]
 }
