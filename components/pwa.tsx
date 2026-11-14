@@ -69,5 +69,43 @@ export function Pwa() {
     }
   }, [])
 
+  // Phones: the app is a fixed screen, so the window itself must never move. iOS still
+  // lets it be dragged (most visibly while the keyboard is up, or when a list is pulled
+  // past its end). A drag is allowed only if something under the finger can really
+  // scroll in that direction.
+  useEffect(() => {
+    if (!window.matchMedia("(pointer: coarse)").matches) return
+    let from: { x: number; y: number } | null = null
+    const onStart = (event: TouchEvent) => {
+      from = event.touches.length === 1 ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null
+    }
+    const onMove = (event: TouchEvent) => {
+      // Two fingers, or a gesture the page can't cancel anyway: leave it alone.
+      if (!from || event.touches.length !== 1 || !event.cancelable) return
+      const dx = event.touches[0].clientX - from.x
+      const dy = event.touches[0].clientY - from.y
+      const vertical = Math.abs(dy) >= Math.abs(dx)
+      for (let element = event.target as Element | null; element && element !== document.body; element = element.parentElement) {
+        const style = getComputedStyle(element)
+        if (vertical) {
+          if (!/auto|scroll/.test(style.overflowY) || element.scrollHeight <= element.clientHeight) continue
+          const atTop = element.scrollTop <= 0
+          const atEnd = element.scrollTop + element.clientHeight >= element.scrollHeight - 1
+          // Pulling down at the top, or up at the end, would move the window instead.
+          if ((dy > 0 && atTop) || (dy < 0 && atEnd)) continue
+          return
+        }
+        if (/auto|scroll/.test(style.overflowX) && element.scrollWidth > element.clientWidth) return
+      }
+      event.preventDefault()
+    }
+    document.addEventListener("touchstart", onStart, { passive: true })
+    document.addEventListener("touchmove", onMove, { passive: false })
+    return () => {
+      document.removeEventListener("touchstart", onStart)
+      document.removeEventListener("touchmove", onMove)
+    }
+  }, [])
+
   return null
 }
