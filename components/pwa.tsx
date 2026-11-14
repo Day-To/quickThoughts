@@ -3,6 +3,34 @@
 import { useEffect } from "react"
 
 /**
+ * Scrolls whatever holds the text cursor just far enough that the cursor is visible,
+ * leaving everything else where it was.
+ */
+function revealCaret() {
+  const selection = window.getSelection()
+  const node = selection?.focusNode
+  if (!selection || !node || selection.rangeCount === 0) return
+  const element = node.nodeType === Node.ELEMENT_NODE ? (node as Element) : node.parentElement
+  if (!element?.closest("[contenteditable='true'], input, textarea")) return
+  // An empty line has no cursor box of its own; use the line.
+  let caret = selection.getRangeAt(0).getBoundingClientRect()
+  if (caret.height === 0) caret = element.getBoundingClientRect()
+
+  // The nearest ancestor that actually scrolls.
+  let scroller: Element | null = element
+  while (scroller) {
+    const overflow = getComputedStyle(scroller).overflowY
+    if ((overflow === "auto" || overflow === "scroll") && scroller.scrollHeight > scroller.clientHeight) break
+    scroller = scroller.parentElement
+  }
+  if (!scroller) return
+  const box = scroller.getBoundingClientRect()
+  const margin = 28
+  if (caret.bottom > box.bottom - margin) scroller.scrollTop += caret.bottom - (box.bottom - margin)
+  else if (caret.top < box.top + margin) scroller.scrollTop -= box.top + margin - caret.top
+}
+
+/**
  * App-like behaviour that has to be set up in the browser: the service worker that keeps
  * the app available offline (only in a built app: during development it would keep
  * serving old files while you edit them), and fitting the app above a phone's keyboard.
@@ -29,6 +57,8 @@ export function Pwa() {
       document.documentElement.style.setProperty("--app-height", `${viewport.height}px`)
       // Undo any slide iOS has already applied.
       if (window.scrollY !== 0 || viewport.offsetTop !== 0) window.scrollTo(0, 0)
+      // The app is shorter now; keep the line being typed on in view, as Notes does.
+      if (keyboardOpen) requestAnimationFrame(revealCaret)
     }
     fit()
     viewport.addEventListener("resize", fit)
